@@ -53,24 +53,25 @@ class WallPicturesViewController: UIViewController {
     
     func loadWallViews(objects: [WallPost]) {
         cleanWall()
+    // the first step here is to clean the scroll view of any other UIView objects that maybif you reload the screen.
         
         var originY: CGFloat = 0
         
-    //1
+    //1 - create a view to display the image and post details
         for wallPost in objects {
             let wallView = UIView(frame: CGRect(x: 0, y: originY, width: self.wallScroll.frame.size.width, height: 270))
     
-    //2
+    //2- download the image data
             wallPost.image.getDataInBackgroundWithBlock { data, error in
                 if let data = data, image = UIImage(data: data) {
-                    //3
+                    //3 - add the image view to the wall view
                     // Add the image
                         let imageView = UIImageView(image: image)
                     imageView.frame = CGRect(x:10, y: 10, width: wallView.frame.size.width - 20, height: 200)
                     imageView.contentMode = UIViewContentMode.ScaleAspectFit
                     wallView.addSubview(imageView)
                     
-                    //4 
+                    //4- Get the user that uploaded the image, and put it in a label with the creation date
                     // add the info label (user and creation date)
                     let creationDate = wallPost.createdAt
                     let dateFormatter = NSDateFormatter()
@@ -94,7 +95,7 @@ class WallPicturesViewController: UIViewController {
                     wallView.addSubview(infoLabel)
                     
                     
-                //5 
+                //5- Add a label with the comment
                 // Add the comment label (user and creation date)
                     let commentLabel = UILabel(frame: CGRect(x: 10, y: CGRectGetMaxY(infoLabel.frame)+5, width: 0, height: 0))
                     commentLabel.text = wallPost.comment
@@ -106,11 +107,11 @@ class WallPicturesViewController: UIViewController {
                 }
             }
             
-            //6 
+            //6- Add it to the scroll view and increment the next post's position
             wallScroll.addSubview(wallView)
             originY += 270
         }
-    //7
+    //7- set the ScrollView's content size
         wallScroll.contentSize.height = CGFloat(originY)
     }
  
