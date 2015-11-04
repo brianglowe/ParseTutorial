@@ -42,7 +42,22 @@ class WallPicturesViewController: UIViewController {
     func getWallImages() {
         //TODO: Get the wall objects from the server
         //TODO: Put the wall objects in the scroll view
+        
+        //1- create a simple query to retrieve WallPost objects, and sort the query by creation date as we defined earlier in WallPost.swift
+        let query = WallPost.query()!
+        query.findObjectsInBackgroundWithBlock { objects, error in
+            if error == nil {
+                //2- Find the object that matches the query. in this case, show all the objects of the type WallPost. If everythign went fine, load the posts to the wall
+                if let objects = objects as? [WallPost] {
+                    self.loadWallViews(objects)
+                }
+            } else if let error = error {
+                //3- if there was an error, then inform the user
+                self.showErrorView(error)
+            }
+        }
     }
+    
     
     // MARK: - Actions
     @IBAction func logOutPressed(sender: AnyObject) {
