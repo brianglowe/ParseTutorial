@@ -233,8 +233,8 @@
 			isa = PBXGroup;
 			children = (
 				0E59774C1AA9F4F500CB22B6 /* WallPicturesViewController.swift */,
-				0ED93C991AAC7CA10028B869 /* WallPicturesTableViewController.swift */,
 				0E59774E1AA9F50F00CB22B6 /* UploadImageViewController.swift */,
+				0ED93C991AAC7CA10028B869 /* WallPicturesTableViewController.swift */,
 			);
 			name = Wall;
 			sourceTree = "<group>";

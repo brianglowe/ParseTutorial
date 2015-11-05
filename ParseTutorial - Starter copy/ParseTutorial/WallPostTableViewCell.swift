@@ -8,8 +8,8 @@
 
 import UIKit
 
-class WallPostTableViewCell: UITableViewCell {
-    @IBOutlet weak var postImage: UIImageView!
+class WallPostTableViewCell: PFTableViewCell {
+    @IBOutlet weak var postImage: PFImageView!
     @IBOutlet weak var createdByLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
