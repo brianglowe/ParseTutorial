@@ -26,10 +26,12 @@ class WallPicturesTableViewController: PFQueryTableViewController {
 
     // MARK: - Actions
     @IBAction func logOutPressed(sender: AnyObject) {
-        //TODO
         //If logout succesful:
+        PFUser.logOut()
         navigationController?.popToRootViewControllerAnimated(true)
     }
+    
+    
  // the method below replaces the UITableView data source method with a more suitable form. you get the returned PFObject as a parameter, without the need to search it in a results array using an index path.
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> PFTableViewCell? {
         //1- Dequeue a cell from the table view, and cast it to a WallPostTableViewCell

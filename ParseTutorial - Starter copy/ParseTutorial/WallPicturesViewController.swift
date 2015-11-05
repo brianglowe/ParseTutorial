@@ -61,8 +61,8 @@ class WallPicturesViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func logOutPressed(sender: AnyObject) {
-        //TODO
         //If logout succesful:
+        PFUser.logOut()
         navigationController?.popToRootViewControllerAnimated(true)
     }
     

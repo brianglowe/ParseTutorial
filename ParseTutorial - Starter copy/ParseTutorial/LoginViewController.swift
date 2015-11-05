@@ -19,6 +19,14 @@ class LoginViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Check if user exists and logged in
+        // When a user logs in to the app, Parse will save the user and their state between app launches. here we check, using optional binding, if the user exists. If so, you check if the user is authenticated, and if so, then navigate to the posts wall.
+        if let user = PFUser.currentUser() {
+            if user.isAuthenticated() {
+                self.performSegueWithIdentifier(scrollViewWallSegue, sender: nil)
+            }
+        }
     }
 
     // MARK: - Actions
